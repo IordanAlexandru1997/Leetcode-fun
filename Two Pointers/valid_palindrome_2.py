@@ -1,17 +1,19 @@
 def is_palindrome(s):
-    start = 0
-    end = len(s) - 1
-    flag = 0
-    while start < end and flag < 2:
-        if s[start] != s[end]:
-            if s[start + 1] == s[end]:
-                start += 1
-            elif s[end - 1] == s[start]:
-                end -= 1
-            flag += 1
-        start += 1
-        end -= 1
-    return True if flag < 2 else False
+    def verify(s, left, right, deleted):
+        while left < right:
+            if s[left] != s[right]:
+                if deleted:
+                    return False
+                else:
+                    return verify(s, left + 1, right, True) or verify(
+                        s, left, right - 1, True
+                    )
+            else:
+                left += 1
+                right -= 1
+        return True
+
+    return verify(s, 0, len(s) - 1, False)
 
 
 s = "aguokepatgbnvfqmgmlcupuufxoohdfpgjdmysgvhmvffcnqxjjxqncffvmhvgsymdjgpfdhooxfuupuculmgmqfvnbgtapekouga"
