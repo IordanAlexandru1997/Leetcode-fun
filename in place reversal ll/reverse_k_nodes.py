@@ -45,6 +45,34 @@ def reverse(prev, next):
     return last
 
 
+def swap_pairs(head):
+    pp = ListNode(0)
+    pp.next = head
+    p = head
+    curr = p.next
+    dummy = head.next
+    while p and curr:
+        p.next = curr.next
+        curr.next = p
+        pp.next = curr
+        pp = p
+        p = p.next
+        if not p:
+            return dummy
+        curr = p.next
+    return dummy
+
+
+def swapPairs(self, head):
+    pre, pre.next = self, head
+    while pre.next and pre.next.next:
+        a = pre.next
+        b = a.next
+        pre.next, b.next, a.next = b, a, b.next
+        pre = a
+    return self.next
+
+
 a = ListNode(1)
 b = ListNode(2)
 c = ListNode(3)
@@ -56,6 +84,7 @@ c.next = d
 d.next = e
 # e.next = None
 k = 4
+print(swap_pairs(a).printList())
 # print(reverseKGroup(a, k).printList())
 
 
@@ -114,4 +143,4 @@ e.next = f
 head = a
 left = 1
 right = 4
-print(reverse_between(head, left, right).printList())
+# print(reverse_between(head, left, right).printList())
