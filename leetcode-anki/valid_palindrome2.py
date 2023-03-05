@@ -32,5 +32,22 @@ def solution2(s):
     return verify(s, 0, len(s) - 1, False)
 
 
+def solution3(s):
+    def verify(s, start, end, deleted):
+        while start < end:
+            if s[start] != s[end]:
+                if deleted:
+                    return False
+                return verify(s, start + 1, end, True) or verify(
+                    s, start, end - 1, True
+                )
+            start += 1
+            end -= 1
+        return True
+
+    return verify(s, 0, len(s) - 1, False)
+
+
 s = "abca"
-print(solution2(s))
+# s = "abc"
+print(solution3(s))

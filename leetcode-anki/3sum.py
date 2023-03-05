@@ -46,5 +46,25 @@ def threeSum(nums):
     # return s
 
 
+def threeSum2(nums):
+    s = set()
+    suma = 0
+    nums.sort()
+    for i in range(len(nums) - 1):
+        left = i + 1
+        right = len(nums) - 1
+        while left < right:
+            suma = nums[i] + nums[left] + nums[right]
+
+            if suma == 0:
+                s.add((nums[i], nums[left], nums[right]))
+                right -= 1
+            if suma < 0:
+                left += 1
+            if suma > 0:
+                right -= 1
+    return list(s)
+
+
 nums = [-1, 0, 1, 2, -1, -4, -2, -3, 3, 0, 4]
-print(threeSum(nums))
+print(threeSum2(nums))
