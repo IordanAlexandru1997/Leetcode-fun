@@ -7,12 +7,12 @@ def k_smallest_number(lists, k):
     for i in range(len(lists)):
         heappush(min_heap, (lists[i][0], i, 0))
 
-    while min_heap and k > 1:
+    while min_heap and k >= 1:
         val, l_idx, next_elem = heappop(min_heap)
         if next_elem + 1 < len(lists[l_idx]):
             heappush(min_heap, (lists[l_idx][next_elem + 1], l_idx, next_elem + 1))
         k -= 1
-    if k == 1:
+    if k == 0:
         return val
     if k > 1:
         return lists[l_idx][-1]
