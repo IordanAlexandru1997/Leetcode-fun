@@ -14,6 +14,14 @@ def solution(s):
     return True
 
 
+def solution2(s):
+    rez = []
+    for c in s:
+        if c.isalnum():
+            rez.append(c.lower())
+    return True if "".join(rez[::-1]) == "".join(rez) else False
+
+
 s = "A man, a plan, a canal: Panama"
 # s = "race a car"
-print(solution(s))
+print(solution2(s))
