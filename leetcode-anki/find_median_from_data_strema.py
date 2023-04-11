@@ -41,3 +41,6 @@ obj.addNum(-5)
 print(obj.findMedian())
 # obj.insert_num(27)
 # print(obj.find_median())
+
+
+  
